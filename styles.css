@@ -1,0 +1,98 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+/* Vidéo de fond */
+#video-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+/* Image fallback derrière la vidéo */
+body {
+  background: url("Montage_Souchon.jpg") center / cover no-repeat fixed;
+  font-family: Arial, sans-serif;
+  color: #000;
+  text-align: center;
+  padding: 20px;
+
+button { padding:10px 20px; margin:10px; border:none; border-radius:8px; font-size:18px; cursor:pointer; }
+.btn { background:#333; color:white; }
+.btn:hover { background:#555; }
+audio { margin-top:20px; }
+.question { margin-top:30px; font-size:22px; }
+
+}
+
+
+/* font-family: Arial, sans-serif; color:#000000; text-align:center; padding:20px; */
+
+
+.quiz-container {
+  text-align: center;
+  background-color: rgba(30, 143, 255, 0.488);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+  /* Ajouts pour l’intro vidéo */
+  display: none;
+  opacity: 0;
+  transition: opacity 1s ease;
+  position: relative;
+  z-index: 1;
+}
+
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: white;
+}
+
+p {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: white;
+}
+
+#phrase {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 20px;
+}
+
+
+.options button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px;
+  font-size: 1.2rem;
+  margin: 10px;
+  width: 200px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.options button:hover {
+  background-color: #45a049;
+}
+
+.hidden {
+  display: none;
+}
+
+#score-container {
+  margin-top: 20px;
+}

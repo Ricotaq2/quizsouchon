@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz Musical Alain Souchon</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <video id="video-bg" autoplay playsinline>
+  <source src="Montage_video_Souchon.mp4" type="video/mp4">
+</video>
+
+  <div class="quiz-container">
+      <div id="app">
+        <h1>Quiz Musical de Alain Souchon</h1>
+    
+        <p id="score"></p>
+        <audio id="player" controls></audio>
+    
+        <div id="questionZone"></div>
+
+        <div id="message" style="font-size:20px; margin-top:15px;"></div>
+
+      </div>
+  </div>
+  
+  
+  
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+
+<script>
+const questions = [ 
+{ extrait: "Music_01_Rockollection.mp3", options: ["Rockollection", "Oiseau malin", "Le soleil donne"], correct: 0 },
+{ extrait: "Music_02_My Song of You.mp3", options: ["c'était déjà toi", "Fille d'avril", "My Song of You"], correct: 2 },
+{ extrait: "Music_03_Le pouvoir des fleurs.mp3", options: ["Un héroïne", "Le pouvoir des fleurs", "Je suis venu pour elle"], correct: 1 }
+
+];
+
+let index = 0;
+let score = 0;
+
+function recommencerQuiz() {
+  index = 0;
+  score = 0;
+  afficherQuestion();
+}
+
+
+function afficherQuestion() {
+document.getElementById("message").textContent = "";
+  if (index >= questions.length) return afficherResultat();
+  const q = questions[index];
+  document.getElementById("player").src = q.extrait;
+  let html = `<p class='question'>Question ${index + 1} / ${questions.length}</p>`;
+  q.options.forEach((opt, i) => {
+    html += `<button class='btn' onclick='choisir(${i})'>${opt}</button><br>`;
+  });
+  document.getElementById("questionZone").innerHTML = html;
+  
+}
+
+
+function choisir(i) {
+  if (i === questions[index].correct) {
+    score++;
+    document.getElementById("message").textContent = "✅ Bonne réponse !";
+  } else {
+    document.getElementById("message").textContent = "❌ Mauvaise réponse";
+  }
+
+  index++;
+  setTimeout(afficherQuestion, 800);
+}
+
+
+
+function afficherResultat() {
+  const total = questions.length;
+  let message = "";
+  let boutonRecommencer = "";
+
+  if (score === total) {
+    message = "🎉 Sans faute ! Incroyable performance !";
+    lancerConfettis();
+  } 
+  else if (score >= total * 0.8) {
+    message = "👏 Excellent score ! Tu y es presque !";
+    boutonRecommencer = `<button class="btn" onclick="recommencerQuiz()">Recommencer</button>`;
+  } 
+  else {
+    message = "💪 Continue, tu peux faire mieux !";
+    boutonRecommencer = `<button class="btn" onclick="recommencerQuiz()">Recommencer</button>`;
+  }
+
+  document.getElementById("questionZone").innerHTML = `
+    <h1>Quiz terminé !</h1>
+    <p>Ton score : ${score} / ${total}</p>
+    <p style="font-size:22px; font-weight:bold;">${message}</p>
+    ${boutonRecommencer}
+  `;
+}
+
+
+
+function lancerConfettis() {
+  const duration = 2000;
+  const end = Date.now() + duration;
+
+  (function frame() {
+    confetti({ particleCount: 6, angle: 60, spread: 55, origin: { x: 0 } });
+    confetti({ particleCount: 6, angle: 120, spread: 55, origin: { x: 1 } });
+
+    if (Date.now() < end) requestAnimationFrame(frame);
+  })();
+}
+
+// afficherQuestion();
+const DELAI_AVANT_QUIZ = 14000; // 4 secondes
+
+setTimeout(() => {
+  if (typeof afficherQuestion === "function") {
+    afficherQuestion();
+  }
+}, DELAI_AVANT_QUIZ);
+
+
+</script>
+
+<script>
+  const video = document.getElementById("video-bg");
+  const quiz = document.querySelector(".quiz-container");
+
+  if (video && quiz) {
+    video.addEventListener("ended", () => {
+      // disparition progressive de la vidéo
+      video.style.opacity = 0;
+
+      setTimeout(() => {
+        video.style.display = "none";
+
+        // apparition du quiz
+        quiz.style.display = "block";
+        setTimeout(() => {
+          quiz.style.opacity = 1;
+        }, 50);
+
+      }, 500);
+    });
+  }
+</script>
+
+
+  
+</body>
+
+</html>
