@@ -32,6 +32,15 @@
 
 
 <script>
+
+const sonCanon = new Audio("Explosion.mp3");
+const sonApplaudissements = new Audio("Applause.mp3");
+
+// réglages optionnels
+sonCanon.volume = 0.7;
+sonApplaudissements.volume = 0.6;
+
+
 const questions = [ 
 { extrait: "Music_01_S'asseoir par terre.mp3", options: ["C'était Menti", "S'asseoir par terre", "Rive gauche"], correct: 1 },
 { extrait: "Music_02_Somerset maugham.mp3", options: ["Somerset maugham", "Petit Tas Tombé", "Les saisons"], correct: 0 },
@@ -126,8 +135,13 @@ function afficherResultat() {
 }
 
 
-
 function lancerConfettis() {
+  // 🔊 sons
+  sonCanon.currentTime = 0;
+  sonApplaudissements.currentTime = 0;
+  sonCanon.play();
+  sonApplaudissements.play();
+
   const duration = 2000;
   const end = Date.now() + duration;
 
@@ -138,6 +152,20 @@ function lancerConfettis() {
     if (Date.now() < end) requestAnimationFrame(frame);
   })();
 }
+
+
+
+/* function lancerConfettis() {
+  const duration = 2000;
+  const end = Date.now() + duration;
+
+  (function frame() {
+    confetti({ particleCount: 6, angle: 60, spread: 55, origin: { x: 0 } });
+    confetti({ particleCount: 6, angle: 120, spread: 55, origin: { x: 1 } });
+
+    if (Date.now() < end) requestAnimationFrame(frame);
+  })();
+} */
 
 // afficherQuestion();
 const DELAI_AVANT_QUIZ = 14000; // 4 secondes
