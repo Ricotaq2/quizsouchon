@@ -33,11 +33,32 @@
 
 <script>
 const questions = [ 
-{ extrait: "Music_01_Rockollection.mp3", options: ["Rockollection", "Oiseau malin", "Le soleil donne"], correct: 0 },
-{ extrait: "Music_02_My Song of You.mp3", options: ["c'était déjà toi", "Fille d'avril", "My Song of You"], correct: 2 },
-{ extrait: "Music_03_Le pouvoir des fleurs.mp3", options: ["Un héroïne", "Le pouvoir des fleurs", "Je suis venu pour elle"], correct: 1 },
-{ extrait: "Music_04_Jeanne.mp3", options: ["Là où je vais", "Jeanne", "The cold song"], correct:1 },
-{ extrait: "Music_05_Le coeur grenadine.mp3", options: ["Le coeur grenadine", "Our song", "La même tribu"], correct:0 },
+{ extrait: "Music_01_S'asseoir par terre.mp3", options: ["C'était Menti", "S'asseoir par terre", "Rive gauche"], correct: 1 },
+{ extrait: "Music_02_Somerset maugham.mp3", options: ["Somerset maugham", "Petit Tas Tombé", "Les saisons"], correct: 0 },
+{ extrait: "Music_03_Au ras des pâquerettes.mp3", options: ["Tailler la zone", "Au ras des pâquerettes", "Ultra moderne solitude"], correct: 1 },
+{ extrait: "Music_04_On avance.mp3", options: ["Et si en plus y'a personne", "Sous les jupes des filles", "On avance"], correct: 2 },
+{ extrait: "Music_05_La p'tite Bill, elle est malade.mp3", options: ["Bidon", "La p'tite Bill, elle est malade", "La compagnie"], correct: 1 },
+{ extrait: "Music_06_Caterpillar.mp3", options: ["Pardon", "Le baiser", "Caterpillar"], correct: 2 },
+{ extrait: "Music_07_Rive gauche.mp3", options: ["Le Bagad de Lann-Bihoué", "Une guitare un citoyen", "Rive gauche"], correct: 2 },
+{ extrait: "Music_08_Tailler la zone.mp3", options: ["Tailler la zone", "Pardon", "C'était Menti"], correct: 0 },
+{ extrait: "Music_09_Ultra moderne solitude.mp3", options: ["Sous les jupes des filles", "Ultra moderne solitude", "Allô Maman bobo"], correct: 1 },
+{ extrait: "Music_10_Foule sentimentale.mp3", options: ["Foule sentimentale", "Presque", "L'amour à la machine"], correct: 0 },
+{ extrait: "Music_11_Le Bagad de Lann-Bihoué.mp3", options: ["La vie ne vaut rien", "Petit Tas Tombé", "Le Bagad de Lann-Bihoué"], correct: 2 },
+{ extrait: "Music_12_Le baiser.mp3", options: ["Ballade de Jim", "C'est déjà ça", "Le baiser"], correct: 2 },
+{ extrait: "Music_13_Bidon.mp3", options: ["Et si en plus y'a personne", "J'veux du cuir", "Bidon"], correct: 2 },
+{ extrait: "Music_14_L'horrible bye bye.mp3", options: ["L'horrible bye bye", "C'est déjà ça", "Derrière les mots"], correct: 0 },
+{ extrait: "Music_15_On s'aime pas.mp3", options: ["Presque", "On s'aime pas", "Ultra moderne solitude"], correct: 1 },
+{ extrait: "Music_16_Petit Tas Tombé.mp3", options: ["C'est comme vous voulez", "Le marin", "Petit Tas Tombé"], correct: 2 },
+{ extrait: "Music_17_Sous les jupes des filles.mp3", options: ["Sous les jupes des filles", "Banale song", "Rame"], correct: 0 },
+{ extrait: "Music_18_J'ai dix ans.mp3", options: ["Les regrets", "J'ai dix ans", "Allô Maman bobo"], correct: 1 },
+{ extrait: "Music_19_C'était Menti.mp3", options: ["Banale song", "Allô Maman bobo", "C'était Menti"], correct: 2 },
+{ extrait: "Music_20_La compagnie.mp3", options: ["La compagnie", "L'amour à la machine", "Ballade de Jim"], correct: 0 },
+{ extrait: "Music_21_Et si en plus y'a personne.mp3", options: ["Quand je serai K.O.", "Les regrets", "Et si en plus y'a personne"], correct: 1 },
+{ extrait: "Music_22_La vie Théodore.mp3", options: ["La vie Théodore", "Pardon", "Banale song"], correct: 0 },
+{ extrait: "Music_23_Les saisons.mp3", options: ["Ballade de Jim", "La vie ne vaut rien", "Les saisons"], correct: 2 },
+{ extrait: "Music_24_Pardon.mp3", options: ["Caterpillar", "Pardon", "Banale song"], correct: 1 },
+{ extrait: "Music_25_Une guitare un citoyen.mp3", options: ["Une guitare un citoyen", "C'est déjà ça", "C'est comme vous voulez"], correct: 0 },
+
 ];
 
 let index = 0;
@@ -73,7 +94,7 @@ function choisir(i) {
   }
 
   index++;
-  setTimeout(afficherQuestion, 800);
+  setTimeout(afficherQuestion, 1500);
 }
 
 
